@@ -25,24 +25,27 @@
     return self;
 }
 
-- (NSString *)returnName {
-    return self.name;
+- (instancetype) init {
+    return [self initWithName:@"" latitude:@0 longitude:@0];
 }
 
+
 - (NSString *)shortenedNameToLength:(NSInteger)count {
-    NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!");
+    
     NSString *returnedName = self.name;
 
-    if (count <0) {
-        NSLog(@"%li, %@", count, returnedName);
-        return returnedName;
+    NSLog(@"%li", count);
+    NSLog(@"%@", returnedName);
+    NSLog(@"%li", [returnedName length]);
+    
+    if (count > 0 && count < [returnedName length]) {
+        NSString *shortName = [returnedName substringToIndex:count];
+        NSLog(@"%@", [returnedName substringToIndex:count]);
+        return shortName;
     }
     
-    NSString *shortName = [returnedName substringToIndex:count];
-    
-    NSLog(@"%li, %@", count, shortName);
-    
-    return shortName;
+    NSLog(@"%@", returnedName);
+    return returnedName;
 }
 
 
